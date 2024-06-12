@@ -1,15 +1,16 @@
 const { Client } = require("@notionhq/client");
 
 // Call our the env keys 
-const { NOTION_KEY, NOTION_DB } = process.env;
+const { NOTION_KEY, NOTION_ID } = process.env;
 
 // Initializing a client
 const notion = new Client({
 	auth: NOTION_KEY,
 });
+
 exports.handler = async function (event, context) {
 	const response = await notion.databases.query({
-		database_id: NOTION_DB,
+		database_id: NOTION_ID,
 	});
 	return {
 		statusCode: 200,
